@@ -13,6 +13,7 @@ for preservation. Checksums of every file are in [SHA1SUMS](SHA1SUMS).
 | --- | --- | --- |
 | `xtreme/` | `cyrom150.bin` (32 KB boot ROM) and `cyos_v1508.bin` (512 KB flash, CyOS 1.5.08), the same files as in MAME's `cybikov1` set | the two files every emulator needs |
 | `classic/` | `cyrom112.bin` (32 KB boot ROM) and `flash_v1246.bin` (528 KB DataFlash, CyOS 1.2.46) of the first Cybiko, the Classic: MAME's `cybikov1` dumps, as [ReBiko](https://github.com/RetroCodeRamen/rebiko)'s release ships them (`roms/boot.bin`, `roms/flash.bin`) | the Classic in either emulator |
+| `classic/` | `Cybiko-AutoUpdate.exe`: Cybiko's System Pack 57 updater for Windows, with CyOS 1.2.57 and its apps for the Classic (and CyOS 1.3.57 for Classics that run CyOS from ROM). `MP3.app`: the Classic's MP3 application v1.3.13 for the CY65P10 MP3 player (MP3, FM radio, voice), "MP3 (200x)(Cybiko Inc.).app" on the cybiko.net mirror | CyOS 1.2.57, which knows the memory card and the MP3 player; both emulators install it from the `.exe` |
 | `cyos-updates/` | `ccyphRU1.5.08r.boot`: Russian CyOS 1.5.08. `avr50c6f.boot`: firmware for the radio's AVR co-processor | an optional CyOS update; the emulators skip the AVR file |
 | `mp3-cartridge/` | from the MP3 player cartridge's CD: `MP3.cap` (the cartridge software) and `Update_US.csu` (CyOS 1.5.06 and apps). The CD's music video clips are only in the CD image | the MP3 cartridge |
 | `xtreme-cd/` | the apps, games and installers (`.cap`) from the Xtreme Installation CD | adding apps and games |
@@ -35,8 +36,10 @@ CD, `mp3-cartridge/MP3.cap` (`sdflash.dl` 21.1.4, `MP3Player.dl` 24.2.1).
   the two dumps go in `/Cybiko` on the SD card, apps in `/Cybiko/apps`, card
   files in `/Cybiko/card`, a `.boot` update in `/Cybiko`. The Classic's two
   files go in `/Cybiko/Classic`.
-- **Cybiko Classic:** in the web emulator make a new device with the model
-  Cybiko Classic and press Start; it fetches the two files from `classic/`.
+- **Cybiko Classic:** in the web emulator pick Cybiko Classic under Settings,
+  Model, and press Start; it fetches the two files from `classic/`. On the
+  board, `Cybiko-AutoUpdate.exe` dropped in `/Cybiko/Classic` installs CyOS
+  1.2.57 (System Pack 57).
 - **Formats and tools** (unpacking `.cap`, MXD clips, and so on):
   [cybiko-docs](https://github.com/SovGVD/cybiko-docs).
 
@@ -45,7 +48,9 @@ CD, `mp3-cartridge/MP3.cap` (`sdflash.dl` 21.1.4, `MP3Player.dl` 24.2.1).
 The dumps match MAME's `cybikov1` set. The Classic's were taken from the
 release zip of [ReBiko](https://github.com/RetroCodeRamen/rebiko) by Dan
 Berkowitz (v1.1027.1b), whose `boot.bin` and `flash.bin` are the same files
-(same SHA-1) as MAME's `cyrom112.bin` and `flash_v1246.bin`. The Xtreme Installation CD is also on
+(same SHA-1) as MAME's `cyrom112.bin` and `flash_v1246.bin`. Gleb found
+`Cybiko-AutoUpdate.exe` (System Pack 57; kn100.me keeps a copy) and the
+Classic MP3 application (the cybiko.net mirror's `Applications/` folder). The Xtreme Installation CD is also on
 the [Internet Archive](https://archive.org/details/CybikoXtremeInstallationCD)
 and the [cybiko.net mirror](https://mirror.jcx.life/cybiko/CD/). We found
 no other public copy of the MP3 cartridge CD or the Russian CyOS.
