@@ -14,6 +14,7 @@ for preservation. Checksums of every file are in [SHA1SUMS](SHA1SUMS).
 | `xtreme/` | `cyrom150.bin` (32 KB boot ROM) and `cyos_v1508.bin` (512 KB flash, CyOS 1.5.08), the same files as in MAME's `cybikov1` set | the two files every emulator needs |
 | `classic/` | `cyrom112.bin` (32 KB boot ROM) and `flash_v1246.bin` (528 KB DataFlash, CyOS 1.2.46) of the first Cybiko, the Classic: MAME's `cybikov1` dumps, as [ReBiko](https://github.com/RetroCodeRamen/rebiko)'s release ships them (`roms/boot.bin`, `roms/flash.bin`) | the Classic in either emulator |
 | `classic/` | `Cybiko-AutoUpdate.exe`: Cybiko's System Pack 57 updater for Windows, with CyOS 1.2.57 and its apps for the Classic (and CyOS 1.3.57 for Classics that run CyOS from ROM). `MP3.app`: the Classic's MP3 application v1.3.13 for the CY65P10 MP3 player (MP3, FM radio, voice), "MP3 (200x)(Cybiko Inc.).app" on the cybiko.net mirror | CyOS 1.2.57, which knows the memory card and the MP3 player; both emulators install it from the `.exe` |
+| `classic/` | `flash_v1257.bin` (1 MB DataFlash): CyOS 1.2.57 ready to run, made by installing System Pack 57 from `Cybiko-AutoUpdate.exe` on `flash_v1246.bin` in Dragonfruit's PC runner (`cybiko_host --sysupdate`), as the real updater did over the serial cable; the dump's own Cybiko ID | the default CyOS of the Classic in both emulators |
 | `cyos-updates/` | `ccyphRU1.5.08r.boot`: Russian CyOS 1.5.08. `avr50c6f.boot`: firmware for the radio's AVR co-processor | an optional CyOS update; the emulators skip the AVR file |
 | `mp3-cartridge/` | from the MP3 player cartridge's CD: `MP3.cap` (the cartridge software) and `Update_US.csu` (CyOS 1.5.06 and apps). The CD's music video clips are only in the CD image | the MP3 cartridge |
 | `xtreme-cd/` | the apps, games and installers (`.cap`) from the Xtreme Installation CD | adding apps and games |
@@ -37,9 +38,11 @@ CD, `mp3-cartridge/MP3.cap` (`sdflash.dl` 21.1.4, `MP3Player.dl` 24.2.1).
   files in `/Cybiko/card`, a `.boot` update in `/Cybiko`. The Classic's two
   files go in `/Cybiko/Classic`.
 - **Cybiko Classic:** in the web emulator pick Cybiko Classic under Settings,
-  Model, and press Start; it fetches the two files from `classic/`. On the
-  board, `Cybiko-AutoUpdate.exe` dropped in `/Cybiko/Classic` installs CyOS
-  1.2.57 (System Pack 57).
+  Model, and press Start; it fetches `cyrom112.bin` and `flash_v1257.bin`
+  (or `flash_v1246.bin`, picked there) from `classic/`. On the
+  board, copy `cyrom112.bin` and `flash_v1257.bin` to `/Cybiko/Classic`;
+  `Cybiko-AutoUpdate.exe` dropped there instead installs CyOS 1.2.57 on the
+  flash the board already has, keeping its files.
 - **Formats and tools** (unpacking `.cap`, MXD clips, and so on):
   [cybiko-docs](https://github.com/SovGVD/cybiko-docs).
 
